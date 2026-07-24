@@ -14,20 +14,23 @@ def csv_to_hash(csv_file):
 
     print(f"Converting {csv_file} to hash format...")
 
-    output_file = csv_file.replace('.csv', '.c')
+    output_file = csv_file.replace('.csv', '.c').capitalize() # take out .c and capitalize the first letter
 
     with open(csv_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
 
-        file.write(f'// {output_file}\n')
-        file.write(f'// Hash table generated from {csv_file}\n\n')
-
-
         with open(output_file, "w") as file:
+            file.write(f'// {output_file}\n')
+            file.write(f'// Hash table generated from {csv_file}\n\n')
+
+            file.write(f'void import{csv_file.replace(".csv", "")}(const char* key, const char* value) {{\n')
             for row in reader:
                 file.write(
-                    f'addHash("{row["key"]}", "{row["value"]}");\n'
+                    f'  addHash("{row["key"]}", "{row["value"]}");\n'
                 )
+
+            file.write("\n  // End of hash table")
+            file.write("}")
 
     print(f"Hash file created: {output_file}")
 
