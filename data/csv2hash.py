@@ -1,5 +1,5 @@
 # csv2hash.py
-# This script reads a CSV file and converts it into a hash (dictionary) format.
+# This script reads a CSV file and converts it into a hash format.
 
 import csv
 import os
@@ -14,7 +14,7 @@ def csv_to_hash(csv_file):
 
     print(f"Converting {csv_file} to hash format...")
 
-    output_file = csv_file.replace('.csv', '.c').capitalize() # take out .c and capitalize the first letter
+    output_file = csv_file.replace('.csv', 'Hash.c') # take out .csv and add Hash.c
 
     with open(csv_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -23,13 +23,17 @@ def csv_to_hash(csv_file):
             file.write(f'// {output_file}\n')
             file.write(f'// Hash table generated from {csv_file}\n\n')
 
-            file.write(f'void import{csv_file.replace(".csv", "")}(const char* key, const char* value) {{\n')
+            file.write('#include "hash.h"\n\n')
+
+            s = output_file.replace(".c", "") # Take out .c from the function name
+            s = s[0].upper() + s[1:] # capitalize first letter of the string
+            file.write(f'void import{s}(const char* key, const char* value) {{\n')
             for row in reader:
                 file.write(
                     f'  addHash("{row["key"]}", "{row["value"]}");\n'
                 )
 
-            file.write("\n  // End of hash table")
+            file.write("\n  // End of hash table\n")
             file.write("}")
 
     print(f"Hash file created: {output_file}")

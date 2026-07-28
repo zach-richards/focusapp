@@ -1,7 +1,9 @@
-// Appcontextlist.c
+// appContextListHash.c
 // Hash table generated from appContextList.csv
 
-void importappContextList(const char* key, const char* value) {
+#include "hash.h"
+
+void importAppContextListHash(const char* key, const char* value) {
   addHash("Visual Studio Code", "Developer");
   addHash("Visual Studio", "Developer");
   addHash("JetBrains IntelliJ IDEA", "Developer");
@@ -502,4 +504,5 @@ void importappContextList(const char* key, const char* value) {
   addHash("OpenTable Desktop", "Lifestyle");
   addHash("Resy Desktop", "Lifestyle");
 
-  // End of hash table}
+  // End of hash table
+}
