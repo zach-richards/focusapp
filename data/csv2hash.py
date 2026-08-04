@@ -14,7 +14,7 @@ def csv_to_hash(csv_file):
 
     print(f"Converting {csv_file} to hash format...")
 
-    output_file = csv_file.replace('.csv', 'Hash.c') # take out .csv and add Hash.c
+    output_file = csv_file.replace('.csv', '_hash.c') # take out .csv and add _hash.c
 
     with open(csv_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -27,7 +27,7 @@ def csv_to_hash(csv_file):
 
             s = output_file.replace(".c", "") # Take out .c from the function name
             s = s[0].upper() + s[1:] # capitalize first letter of the string
-            file.write(f'void import{s}(const char* key, const char* value) {{\n')
+            file.write(f'void import_{s}(const char* key, const char* value) {{\n')
             for row in reader:
                 file.write(
                     f'  addHash("{row["key"]}", "{row["value"]}");\n'

@@ -1,9 +1,9 @@
-// domainContextListHash.c
-// Hash table generated from domainContextList.csv
+// domain_context_list_hash.c
+// Hash table generated from domain_context_list.csv
 
 #include "hash.h"
 
-void importDomainContextListHash(const char* key, const char* value) {
+void import_Domain_context_list_hash(const char* key, const char* value) {
   addHash("google.com", "Search");
   addHash("cloudflare.com", "Developer");
   addHash("facebook.com", "Social");

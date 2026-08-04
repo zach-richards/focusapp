@@ -1,9 +1,9 @@
-// appContextListHash.c
-// Hash table generated from appContextList.csv
+// app_context_list_hash.c
+// Hash table generated from app_context_list.csv
 
 #include "hash.h"
 
-void importAppContextListHash(const char* key, const char* value) {
+void import_App_context_list_hash(const char* key, const char* value) {
   addHash("Visual Studio Code", "Developer");
   addHash("Visual Studio", "Developer");
   addHash("JetBrains IntelliJ IDEA", "Developer");
