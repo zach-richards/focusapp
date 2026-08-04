@@ -14,7 +14,13 @@ def csv_to_hash(csv_file):
 
     print(f"Converting {csv_file} to hash format...")
 
-    output_file = csv_file.replace('.csv', '_hash.c') # take out .csv and add _hash.c
+    output_dir = "../src/user_track/windows/context"
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    filename = os.path.basename(csv_file).replace(".csv", "_hash.c")
+
+    output_file = os.path.join(output_dir, filename)
 
     with open(csv_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -23,7 +29,7 @@ def csv_to_hash(csv_file):
             file.write(f'// {output_file}\n')
             file.write(f'// Hash table generated from {csv_file}\n\n')
 
-            file.write('#include "hash.h"\n\n')
+            file.write('#include <user_track/windows/context/hash.h>\n\n')
 
             s = output_file.replace(".c", "") # Take out .c from the function name
             s = s[0].upper() + s[1:] # capitalize first letter of the string
