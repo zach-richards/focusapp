@@ -18,7 +18,7 @@ struct WindowList {
     std::vector<WindowInfo> windows;
 };
 
-WindowList getWindows()
+WindowList get_windows()
 {
     WindowList list;
 
@@ -44,3 +44,5 @@ WindowList getWindows()
 
     return list;
 }
+
+void view

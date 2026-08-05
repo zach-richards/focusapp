@@ -10,4 +10,6 @@ struct WindowList {
     std::vector<WindowInfo> windows;
 };
 
+WindowList get_windows();
+
 #endif

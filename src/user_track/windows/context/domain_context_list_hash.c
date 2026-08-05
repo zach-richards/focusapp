@@ -3,7 +3,7 @@
 
 #include <user_track/windows/context/hash.h>
 
-void import_../src/user_track/windows/context/domain_context_list_hash(const char* key, const char* value) {
+void import_domain_context_list_hash(const char* key, const char* value) {
   addHash("google.com", "Search");
   addHash("cloudflare.com", "Developer");
   addHash("facebook.com", "Social");
