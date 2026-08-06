@@ -5,6 +5,9 @@
 
 #include <QString>
 #include <WId>
+#include <KWindowSystem>
+#include <KWindowInfo>
+#include <vector>
 
 struct WindowInfo {
     QString title;

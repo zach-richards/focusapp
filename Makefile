@@ -1,20 +1,20 @@
-SOURCES_C = src/main.c \
-            src/user_track/system.c \
-            src/user_track/windows/window_list.c \
-            src/user_track/windows/window.c
+CC := gcc
 
-SOURCES_CPP = src/user_track/windows/kwindowsystem.cpp
+BIN_DIR := bin
 
-all: bin/focusapp
+SOURCES_C = \
+	src/main.c \
+	src/user_track/system.c \
+	src/user_track/windows/window_list.c \
+	src/user_track/windows/window.c
 
-bin/focusapp: src/main.c
-	gcc src/main.c -o bin/focusapp
+SOURCES_CPP = \
+	src/user_track/windows/kwindowsystem.cpp
 
-build: bin/focusapp
-	@echo "Building AppImage..."
-	@./linuxdeploy-x86_64.AppImage \
-    	--appdir FocusApp.AppDir \
-    	--output appimage
-	@mv FocusApp*.AppImage ../dist
-	@echo "Build complete. AppImage created in dist directory."
-	
+all: $(BIN_DIR)/focusapp
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+$(BIN_DIR)/focusapp: | $(BIN_DIR)
+	$(CC) -o $@

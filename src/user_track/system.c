@@ -4,5 +4,4 @@
 
 struct SystemInfo {
     WindowList active_windows;
-
 }
